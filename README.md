@@ -29,7 +29,9 @@
 
 ## Tasks it can do for you:
 
+- It can change the voice depending on user input.
 - It can tell you date, time, day and month.
+- It will wish you depending on the time of the day.
 - It can launch any windows based application for you like notepad, word, edge, chrome, calculator, calender, and the list goes long.
 - If you are feeling quite bored, it can tell you a random joke.
 - And if your mood is little low, don't worry, strydo will tell you a daily quote to stay motivated in life and in all situations:)
