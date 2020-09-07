@@ -10,6 +10,8 @@ import winshell
 import urllib.request
 import re
 import webbrowser
+import speech_recognition as sr
+import time
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -19,13 +21,24 @@ print("                                   -------------------->>>>>>>>>>>>> STRY
 
 
 # changing voice to male or female voice depending on the user's input
-pyttsx3.speak("Greetings, this is strydo, a personal voice assistant made by yaadvi, which will be there for you everytime you need it. Tell me, you wanna talk to Ella or Scarlet?")
-print("Ella or Scarlet: ", end = '')
-speaker = input()
-speaker = speaker.lower()
-if ("ella" in speaker):
+pyttsx3.speak("Greetings, this is strydo, a personal voice assistant made by yaadvi, which will be there for you everytime you need it. Tell me, you wanna talk to Ben or Kate?")
+print("Ben or Kate: ", end = '')
+
+r = sr.Recognizer()
+
+with sr.Microphone() as source:
+    r.adjust_for_ambient_noise(source)
+    print('we are listening....')
+    audio = r.listen(source)
+    print('speech done...')
+    speaker = r.recognize_google(audio)
+    #try:
+       # print("You said: " + r.recognize_google(audio))
+    #except Exception as e:
+       # print("Error: " + str(e))
+if ("Kate" or "kit" or "cake" in speaker):
     engine.setProperty('voice', voices[1].id)
-elif ("scarlet" in speaker):
+elif ("Ben" in speaker):
     engine.setProperty('voice', voices[0].id)
 else:
     print("Sorry, we couldn't recognize you ")
@@ -36,7 +49,14 @@ else:
 # Changing the greeting message depending on the time of the day
 pyttsx3.speak("Hello my friend, I would like to know your good name?")
 print("Your name please: ", end = '')
-name = input()
+r = sr.Recognizer()
+with sr.Microphone() as source:
+    r.adjust_for_ambient_noise(source)
+    print('we are listening....')
+    audio = r.listen(source)
+    print('speech done...')
+    name = r.recognize_google(audio)
+
 hour = int(datetime.datetime.now().hour)
 if hour>=0 and hour<12:
     pyttsx3.speak("Good Morning " + name + "  it's my pleasure to assist you!")
@@ -51,10 +71,18 @@ else:
 
 # writing conditions to help voice assistant perform different tasks depending on user's input
 while True:
-    print("What can i do for you: ", end='')
 
-    p = input()
-    p = p.lower()
+    print("What can i do for you: ", end='')
+    r=sr.Recognizer()
+    #r.pause_threshold=1
+    with sr.Microphone() as source:
+          r.adjust_for_ambient_noise(source)
+          print('we are listening...')
+          audio=r.listen(source)
+          print('speech done...') 
+          p = r.recognize_google(audio)
+    #p = p.lower()
+    
     # print(p)
     # os.system(p)
 
@@ -138,7 +166,12 @@ while True:
     elif ("ssh" in p or "putty" in p):
         pyttsx3.speak("Tell us the I P address of the host system: ")
         print("IP Address of host: ", end= '')
-        IP = input()
+        with sr.Microphone() as source:
+              r.adjust_for_ambient_noise(source)
+              print('we are listening....')
+              audio = r.listen(source)
+              print('speech done...')
+              IP = r.recognize_google(audio)
         os.system("putty -ssh " + IP + "@host")
     elif ("remote desktop connection" in p):
         os.system("start mstsc")
@@ -201,13 +234,21 @@ while True:
         videolink = re.findall(r"watch\?v=(\S{11})", link.read().decode())
         finalwebsite=('https://www.youtube.com/watch?v=' + videolink[0])
         webbrowser.open_new(finalwebsite)
+        
     elif (("exit" in p) or ("quit" in p) or ("close" in p) or ("goodbye" in p) or ("terminate" in p) or ("bye" in p) or ("leave" in p)):
         pyttsx3.speak("Goodbyes are not forever, are not the end; it simply means I’ll miss you until we meet again.")
         break   
     else:
         pyttsx3.speak("Do you want me to search your query on the internet?")
         print("yes or no: ", end ='')
-        response = input()
+        r = sr.Recognizer()
+        with sr.Microphone() as source:
+             r.adjust_for_ambient_noise(source)
+             print('we are listening....')
+             audio = r.listen(source)
+             print('speech done...')
+             response = r.recognize_google(audio)
+       
         if ("yes" in response or "y" in response or "Yup" in response):
             pyttsx3.speak("Here you go!")
             query = str(p)
