@@ -38,7 +38,7 @@
 - Ya, it can also do remote desktop connection for you ( if you have putty installed in your system, it will do it for you). 
 - It can hibernate, sleep, log off and shutdown your PC.
 - It can also click a selfie for you.
-- And last but not the least, it can recycle your recycling bin.Pretty much, right?
+- It can recycle your recycling bin.Pretty much, right?
 - It can open file explorer.
 - It can also open common websites like google, youtube, twitter, facebook, linkedin, stackoverflow, etc.
 - Fun thing: Try asking strydo "play baby shark"
@@ -47,7 +47,6 @@
 - It can open windows settings for you.
 - Try giving a compliment to strydo "strydo you are great" or anything you want.
 - It can show you cooking recipes, can play any song for you.
-- It can also do remote desktop connection.
 - It can search any query for you in the google.
 
 ## Modules used for creating this voice assistant:
