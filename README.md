@@ -11,7 +11,7 @@
 
 <!-- **This is the initial step of making the voice assistant.** -->
 
-**So i have used python to create this project. It will assist you to perform various task in windows operating system like you can launch any program in your pc.**
+<!-- **So i have used python to create this project. It will assist you to perform various task in windows operating system like you can launch any program in your pc.** -->
 
 ## Why strydo?
 
@@ -76,4 +76,4 @@ pip install [module name]
 python mysoftwaretemplate.py
 ```
 
-**Guys, do give it a try!**
+<!-- **Guys, do give it a try!** -->
